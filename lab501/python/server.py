@@ -8,9 +8,11 @@ userCookieName = 'authdaemon2-user'
 
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
-        self.send_response(200)
         bc = BaseCookie(self.headers['Cookie'])
         userCookie = bc.get(userCookieName)
+
+        self.send_response(200)
+        self.end_headers()
         self.wfile.write(bytes(f"Hello {userCookie.value if userCookie else 'Unknown' }. The current time is {datetime.datetime.now()}", "utf-8"))
 
 if __name__ == "__main__":        
