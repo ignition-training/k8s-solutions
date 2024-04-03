@@ -15,7 +15,7 @@ app.get('*', function(req, res) {
   try {
     const user = req.cookies[userCookie] || 'UnknownUser'
 
-    res.send(`Hello ${user}.\n The current time is: ${new Date()}`)
+    res.send(`Hello ${user}. The current time is: ${new Date()}`)
   }
   catch (err) {
     console.error(`Error processing ${err} ${JSON.stringify(err)}`)
