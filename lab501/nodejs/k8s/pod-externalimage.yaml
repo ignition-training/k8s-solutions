@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: lab501-nodejs-external
+  labels:
+    app: lab501
+spec:
+  containers:
+    - name: hellocontainer
+      image: ignitiontraining/lab501nodejs:1.0
+      imagePullPolicy: Always
+      resources:
+        limits:
+          memory: 30Mi
+      ports:
+        - name: greeting-port
+          containerPort: 4574
+
+
