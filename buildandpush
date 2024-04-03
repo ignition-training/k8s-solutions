@@ -1,0 +1,10 @@
+build_and_push() {
+  docker build -t $1 $2
+  docker push $1
+}
+
+
+build_and_push ignitiontraining/lab501nodejs:1.0 lab501/nodejs
+build_and_push ignitiontraining/lab501go:1.0 lab501/go
+build_and_push ignitiontraining/lab501python:1.0 lab501/python
+
