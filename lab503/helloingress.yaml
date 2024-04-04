@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/use-regex: "true"
+  labels:
+    app: lab503
+  name: helloingress 
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: helloservice 
+            port:
+              number: 5859 
+        path: /user111-hello(/|$)(.*)
+        pathType: ImplementationSpecific

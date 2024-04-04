@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloservice
+  labels:
+    app: lab502
+spec:
+  ports:
+  - targetPort: greeting-port
+    port: 5859
+  selector:
+    app: lab501
