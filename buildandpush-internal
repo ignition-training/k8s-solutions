@@ -1,0 +1,13 @@
+build_and_push() {
+  docker build -t $1 $2
+  docker push $1
+}
+
+REGPREFIX=k8s.ignition-training.com/$USER
+
+
+build_and_push $REGPREFIX/lab501nodejs:1.0 lab501/nodejs
+build_and_push $REGPREFIX/lab501go:1.0 lab501/go
+build_and_push $REGPREFIX/lab501python:1.0 lab501/python
+
+build_and_push $REGPREFIX/lab601nodejs:1.0 lab601/nodejs

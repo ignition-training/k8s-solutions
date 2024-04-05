@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: lab501-python
   labels:
-    app: lab501
+    app: hello
 spec:
   imagePullSecrets:
   - name: regcred

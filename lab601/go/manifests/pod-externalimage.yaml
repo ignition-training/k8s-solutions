@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: lab501-nodejs-external
+  name: lab501-go-external
   labels:
-    app: hello 
+    app: lab501
 spec:
   containers:
     - name: hellocontainer
-      image: ignitiontraining/lab501nodejs:1.0
+      image: ignitiontraining/lab501go:1.0
       imagePullPolicy: Always
       resources:
         limits:
