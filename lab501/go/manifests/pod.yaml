@@ -9,11 +9,11 @@ spec:
   - name: regcred
   containers:
     - name: hellocontainer
-      image: k8s.ignition-training.com/user111/go501:1.0
+      image: k8s.ignition-training.com/user111/lab501go:1.0
       imagePullPolicy: Always
       resources:
         limits:
-          memory: 30Mi
+          memory: 120Mi
       ports:
         - name: greeting-port
           containerPort: 4574

@@ -27,5 +27,6 @@ func serve(res http.ResponseWriter, req *http.Request) {
 func main() {
   http.HandleFunc("/", serve)
 
+  fmt.Println(fmt.Sprintf("Listening on %s:%d", host, portNumber))
   http.ListenAndServe(fmt.Sprintf("%s:%d", host, portNumber), nil)
 }
