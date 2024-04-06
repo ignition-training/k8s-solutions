@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: lab601-nodejs-external
+  labels:
+    app: hello 
+spec:
+  containers:
+    - name: hellocontainer
+      image: ignitiontraining/lab601nodejs:1.0
+      imagePullPolicy: Always
+      resources:
+        limits:
+          memory: 30Mi
+      envFrom:
+      - configMapRef:
+          name: lab602-config
+      ports:
+        - name: greeting-port
+          containerPort: 4545
+
+
