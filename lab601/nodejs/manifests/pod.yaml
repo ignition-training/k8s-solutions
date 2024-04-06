@@ -3,25 +3,24 @@ kind: Pod
 metadata:
   name: lab601-nodejs
   labels:
-    app: lab601
+    app: hello 
 spec:
   imagePullSecrets:
   - name: regcred
   containers:
     - name: hellocontainer
-      image: k8s.ignition-training.com/user111/nodejs601:1.0
+      image: k8s.ignition-training.com/user111/lab601nodejs:1.0
       imagePullPolicy: Always
       resources:
         limits:
           memory: 30Mi
-      ports:
-        - name: greeting-port
-          containerPort: 4574 
       env:
       - name: LISTEN_PORT
-        value: "4574"
+        value: "4545"
       - name: GREETING
         value: Selam
-
+      ports:
+        - name: greeting-port
+          containerPort: 4545
 
 

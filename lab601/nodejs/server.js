@@ -6,9 +6,10 @@ const cookieParser = require('cookie-parser')
 const app = express()
 app.use(cookieParser())
 
+
 const listenHost = "0.0.0.0"
-const listenPort =  parseInt(process.env.LISTEN_PORT) || 3344 
-const greeting = process.env.GREETING || "Hello"
+const listenPort =  parseInt(process.env.LISTEN_PORT || "4574")
+const greeting = process.env.GREETING || "Wotcha"
 
 const userCookie = 'authdaemon2-user'
 

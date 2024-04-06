@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: lab601-nodejs-external
   labels:
-    app: lab601
+    app: hello 
 spec:
   containers:
     - name: hellocontainer
@@ -12,14 +12,13 @@ spec:
       resources:
         limits:
           memory: 30Mi
-      ports:
-        - name: greeting-port
-          containerPort: 4574
       env:
       - name: LISTEN_PORT
-        value: "4574"
+        value: "4545"
       - name: GREETING
-        value: Selam
-
+        value: Wotcha
+      ports:
+        - name: greeting-port
+          containerPort: 4545
 
 
