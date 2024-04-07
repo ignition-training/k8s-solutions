@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment 
 metadata:
-  name: lab701-nodejs
+  name: lab802-nodejs
   labels:
     app: hello 
 spec:
@@ -20,7 +20,7 @@ spec:
           name: lab602-config 
       containers:
         - name: hellocontainer
-          image: k8s.ignition-training.com/user111/lab701nodejs:1.0
+          image: k8s.ignition-training/user111/lab802nodejs:1.0
           imagePullPolicy: Always
           resources:
             limits:
@@ -31,8 +31,10 @@ spec:
           env:
           - name: GREETING_LOCATION
             value: /data/GREETING
-          - name: RANDOMLY_ADDED_VAR
-            value: ThisTriggersRolloutWhenNew 
+          - name: NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
           ports:
             - name: greeting-port
               containerPort: 4545

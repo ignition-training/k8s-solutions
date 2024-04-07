@@ -1,0 +1,22 @@
+All PVs that have starsign of libra;
+kubectl get pv -l starsign=libra
+
+All PVs that have style of punk:
+kubectl get pv -l style=punk
+
+All PVs that are not right handed:
+kubectl get pv -l handed!=right
+
+All PVs that are neither right nor left handed:
+kubectl get pv -l handed!=right,handed!=left
+
+All PVs that are neither right nor left handed but do have a handed label
+kubectl get pv -l handed!=right,handed!=left,handed
+
+
+
+All PVs that have a starsign of scorpio or aries or gemini
+kubectl get pv -l "starsign in (scorpio, aries, gemini)
+
+All PVs that are neither left nor right handed
+kubectl get pv -l "handed notin (left, right)
