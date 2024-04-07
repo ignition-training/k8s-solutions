@@ -19,6 +19,6 @@ spec:
         value: Tardias
       ports:
         - name: greeting-port
-          containerPort: 4574
+          containerPort: 4545
 
 
