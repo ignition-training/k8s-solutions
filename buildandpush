@@ -11,3 +11,5 @@ build_and_push ignitiontraining/lab601nodejs:1.0 lab601/nodejs
 build_and_push ignitiontraining/lab603nodejs:1.0 lab603/nodejs
 
 build_and_push ignitiontraining/lab701nodejs:1.0 lab701/nodejs
+
+build_and_push ignitiontraining/lab802nodejs:1.0 lab802/nodejs
