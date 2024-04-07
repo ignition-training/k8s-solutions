@@ -14,6 +14,8 @@ spec:
       labels:
         app: hello
     spec:
+      imagePullSecrets:
+      - name: regcred
       volumes:
       - name: config-volume
         configMap:
