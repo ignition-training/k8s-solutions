@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: lab603-nodejs
+  labels:
+    app: hello 
+spec:
+  volumes:
+  - name: config-volume
+    configMap:
+      name: lab602-config 
+  containers:
+    - name: hellocontainer
+      image: k8s.ignition-training.com/user111/lab603nodejs:1.0
+      imagePullPolicy: Always
+      resources:
+        limits:
+          memory: 30Mi
+      envFrom:                 # This will bring in more variables than we use, no problem though
+      - configMapRef:
+          name: lab602-config 
+      env:
+      - name: GREETING_LOCATION
+        value: /data/GREETING
+      ports:
+        - name: greeting-port
+          containerPort: 4545
+      volumeMounts:
+      - name: config-volume
+        mountPath: /data
+        readOnly: true
+
+
