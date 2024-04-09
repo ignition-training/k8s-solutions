@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab901
+spec:
+  replicas: 10
+  selector:
+    matchLabels: 
+      lab: "901"
+      course: k8s
+  strategy:
+    type: 'Recreate'
+  template:
+    metadata:
+      labels:
+        lab: "901"
+        course: k8s
+    spec:
+      terminationGracePeriodSeconds: 5
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: fruit
+                operator: In
+                values:
+                - mango
+                - pear
+                - banana
+        podAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 2 
+            podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  lab: "901"
+              topologyKey: kubernetes.io/hostname
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1 
+            podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  course: k8s
+              topologyKey: kubernetes.io/hostname 
+      containers:
+        - name: busybox 
+          image: busybox 
+          stdin: true
+          tty: true
