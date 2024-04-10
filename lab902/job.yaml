@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sayhi 
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      volumes:
+      - name: shared-dir
+        emptyDir:
+          sizeLimit: 1Mi
+      initContainers:
+      - name: writehi
+        image: busybox
+        command: ["sh", "-c", "echo bonjour > /d1/hello.txt"]
+        volumeMounts:
+        - name: shared-dir
+          mountPath: "/d1"
+      containers:
+      - name: sayhi 
+        image: busybox
+        command: ["cat",  "/d1/hello.txt"]
+        volumeMounts:
+        - name: shared-dir
+          mountPath: "/d1"
+  backoffLimit: 4
+

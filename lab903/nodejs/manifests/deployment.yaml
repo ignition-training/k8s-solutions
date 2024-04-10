@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: lab903-nodejs
+  labels:
+    app: hello 
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      imagePullSecrets:
+      - name: regcred
+      volumes:
+      - name: config-volume
+        configMap:
+          name: lab602-config 
+      containers:
+        - name: hellocontainer
+          image: k8s.ignition-training/user111/lab903nodejs:1.0
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: 100Mi
+          envFrom:                 # This will bring in more variables than we use, no problem though
+          - configMapRef:
+              name: lab602-config 
+          env:
+          - name: GREETING_LOCATION
+            value: /data/GREETING
+          - name: NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          ports:
+            - name: greeting-port
+              containerPort: 4545
+          volumeMounts:
+          - name: config-volume
+            mountPath: /data
+            readOnly: true
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 4545
+            initialDelaySeconds: 10
+            periodSeconds: 5
+

@@ -19,3 +19,5 @@ build_and_push $REGPREFIX/lab603nodejs:1.0 lab603/nodejs
 build_and_push $REGPREFIX/lab701nodejs:1.0 lab701/nodejs
 
 build_and_push $REGPREFIX/lab802nodejs:1.0 lab802/nodejs
+
+build_and_push $REGPREFIX/lab903nodejs:1.0 lab903/nodejs
