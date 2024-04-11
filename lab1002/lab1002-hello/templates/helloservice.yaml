@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name -}}-helloservice
+  labels:
+    app: hello 
+      #    {{- include "recommendedlabels" . | indent 4 }}
+spec:
+  ports:
+  - targetPort: greeting-port
+    port: {{ .Values.servicePort }} 
+  selector:
+    app: hello 

@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/use-regex: "true"
+  labels:
+    app: hello 
+    {{- include "recommendedlabels" . | indent 4 }}
+  name: {{ .Release.Name -}}-helloingress 
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: {{ .Release.Name -}}-helloservice 
+            port:
+              number: {{ .Values.servicePort }} 
+        path: {{ .Values.urlPrefix }}(/|$)(.*)
+        pathType: ImplementationSpecific
