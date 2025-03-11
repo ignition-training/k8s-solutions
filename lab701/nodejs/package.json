@@ -1,7 +1,7 @@
 {
-  "name": "lab501",
+  "name": "lab701",
   "version": "1.0.0",
-  "description": "Solution for lab 501 on the Welcome to Kubernetes Course",
+  "description": "Solution for lab 701 on the Welcome to Kubernetes Course",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
