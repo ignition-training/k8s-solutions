@@ -1,10 +1,8 @@
-"use strict"
-
-const express = require('express')
-const cookieParser = require('cookie-parser')
-const { readFile } = require('node:fs/promises')
-const os = require('os')
-const k8s = require('@kubernetes/client-node')
+import express from 'express'
+import cookieParser from 'cookie-parser'
+import { readFile } from 'node:fs/promises'
+import os from 'os'
+import * as k8s from '@kubernetes/client-node'
 
 const app = express()
 app.use(cookieParser())
@@ -28,9 +26,9 @@ let ready = true
 
 async function getPodNames()
 {
-  var pods = await k8sApi.listNamespacedPod(namespace)
+  var pods = await k8sApi.listNamespacedPod({ namespace })
  
-  return pods.body.items.map(x => x.metadata.name)
+  return pods.items.map(x => x.metadata.name)
 }
 
 app.get('/readyz', function(req, res) {

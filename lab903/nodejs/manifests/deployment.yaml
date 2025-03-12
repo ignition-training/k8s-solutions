@@ -1,3 +1,4 @@
+# Remember to change the repository
 apiVersion: apps/v1
 kind: Deployment 
 metadata:
@@ -14,15 +15,14 @@ spec:
       labels:
         app: hello
     spec:
-      imagePullSecrets:
-      - name: regcred
+      serviceAccountName: helloaccount
       volumes:
       - name: config-volume
         configMap:
           name: lab602-config 
       containers:
         - name: hellocontainer
-          image: k8s.ignition-training/user111/lab903nodejs:1.0
+          image: registry.k8s.igntnlabs.com:9443/testuser8/lab903nodejs:1.0
           imagePullPolicy: Always
           resources:
             limits:
