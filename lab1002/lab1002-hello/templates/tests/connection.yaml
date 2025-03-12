@@ -9,5 +9,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['https://k8s.ignition-training.com{{- .Values.urlPrefix }}']
+      args: ['https://k8s.igntnlabs.com{{- .Values.urlPrefix }}']
   restartPolicy: Never

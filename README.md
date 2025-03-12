@@ -1,2 +1,2 @@
 # k8s-solutions
-Solutions for the Welcome to Kubernetes Course
+Solutions for labs on K8s-FD: Fundamental Kubernetes
