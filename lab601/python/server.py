@@ -4,8 +4,8 @@ import datetime
 import os
 
 hostName = "0.0.0.0"
-serverPort = int(os.environ['LISTEN_PORT']) if os.environ['LISTEN_PORT'] else 4574
-greeting = os.environ['GREETING'] if os.environ['GREETING'] else 'Namaste'
+serverPort = int(os.environ['LISTEN_PORT']) if 'LISTEN_PORT' in os.environ else 4574
+greeting = os.environ['GREETING'] if 'GREETING' in os.environ else 'Namaste'
 
 userCookieName = 'authdaemon2-user'
 
