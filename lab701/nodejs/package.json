@@ -1,8 +1,9 @@
 {
   "name": "lab701",
   "version": "1.0.0",
-  "description": "Solution for lab 701 on the Welcome to Kubernetes Course",
+  "description": "Solution for lab 701 on K8s-FD: Fundamental Kubernetes",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

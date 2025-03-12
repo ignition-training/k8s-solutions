@@ -1,8 +1,6 @@
-"use strict"
-
-const express = require('express')
-const cookieParser = require('cookie-parser')
-const { readFile } = require('node:fs/promises')
+import express from 'express'
+import cookieParser from 'cookie-parser'
+import { readFile } from 'node:fs/promises'
 
 const app = express()
 app.use(cookieParser())

@@ -1,3 +1,4 @@
+# Remember to change the name of the repository
 apiVersion: apps/v1
 kind: Deployment 
 metadata:
@@ -20,7 +21,7 @@ spec:
           name: lab602-config 
       containers:
         - name: hellocontainer
-          image: k8s.ignition-training.com/user111/lab701nodejs:1.0
+          image: registry.k8s.igntnlabs.com:9443/testuser8/lab701nodejs:1.0
           imagePullPolicy: Always
           resources:
             limits:

@@ -1,7 +1,7 @@
 {
   "name": "lab501",
   "version": "1.0.0",
-  "description": "Solution for lab 501 on the K8s-FD: Fundamental Kubernetes",
+  "description": "Solution for lab 501 on K8s-FD: Fundamental Kubernetes",
   "main": "index.js",
   "type": "module",
   "scripts": {
