@@ -8,7 +8,7 @@ metadata:
     app: hello 
   name: helloingress 
 spec:
-  ingressClassName: nginx
+  ingressClassName: entry-ingress-class 
   rules:
   - http:
       paths:
@@ -17,5 +17,5 @@ spec:
             name: helloservice 
             port:
               number: 5859 
-        path: /user111-hello(/|$)(.*)
+        path: /testuser8-hello(/|$)(.*)
         pathType: ImplementationSpecific
