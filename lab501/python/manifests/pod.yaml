@@ -5,11 +5,9 @@ metadata:
   labels:
     app: hello
 spec:
-  imagePullSecrets:
-  - name: regcred
   containers:
     - name: hellocontainer
-      image: k8s.ignition-training.com/user111/lab501python:1.0
+      image: registry.k8s.igntnlabs.com:9443/testuser8/lab501python:1.0
       imagePullPolicy: Always
       resources:
         limits:

@@ -14,19 +14,18 @@ spec:
       labels:
         app: hello
     spec:
-      imagePullSecrets:
-      - name: regcred
+      serviceAccountName: helloaccount
       volumes:
       - name: config-volume
         configMap:
           name: lab602-config 
       containers:
         - name: hellocontainer
-          image: k8s.ignition-training/user111/lab802nodejs:1.0
+          image: registry.k8s.igntnlabs.com:9443/testuser8/lab802nodejs:1.0
           imagePullPolicy: Always
           resources:
             limits:
-              memory: 30Mi
+              memory: 100Mi
           envFrom:                 # This will bring in more variables than we use, no problem though
           - configMapRef:
               name: lab602-config 

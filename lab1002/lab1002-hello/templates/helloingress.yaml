@@ -9,7 +9,7 @@ metadata:
     {{- include "recommendedlabels" . | indent 4 }}
   name: {{ .Release.Name -}}-helloingress 
 spec:
-  ingressClassName: nginx
+  ingressClassName: entry-ingress-class 
   rules:
   - http:
       paths:

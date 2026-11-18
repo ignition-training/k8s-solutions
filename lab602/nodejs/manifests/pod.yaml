@@ -1,3 +1,4 @@
+# Remember to change the repository to match your user
 apiVersion: v1
 kind: Pod
 metadata:
@@ -5,11 +6,9 @@ metadata:
   labels:
     app: hello 
 spec:
-  imagePullSecrets:
-  - name: regcred
   containers:
     - name: hellocontainer
-      image: k8s.ignition-training.com/user111/lab601nodejs:1.0
+      image: registry.k8s.igntnlabs.com:9443/testuser8/lab601nodejs:1.0
       imagePullPolicy: Always
       resources:
         limits:
@@ -17,7 +16,6 @@ spec:
       envFrom:
       - configMapRef:
           name: lab602-config
-        value: Selam
       ports:
         - name: greeting-port
           containerPort: 4545

@@ -1,8 +1,9 @@
+# You will need to change the namespace
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: labrole
-  namespace: user111
+  namespace: testuser8 
 rules:
 - apiGroups: [""]
   resources: ["pods", "services"]

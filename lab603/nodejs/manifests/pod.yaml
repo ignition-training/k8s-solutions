@@ -5,15 +5,13 @@ metadata:
   labels:
     app: hello 
 spec:
-  imagePullSecrets:
-  - name: regcred
   volumes:
   - name: config-volume
     configMap:
       name: lab602-config 
   containers:
     - name: hellocontainer
-      image: k8s.ignition-training.com/user111/lab603nodejs:1.0
+      image: registry.k8s.igntnlabs.com:9443/testuser8/lab603nodejs:1.0
       imagePullPolicy: Always
       resources:
         limits:
