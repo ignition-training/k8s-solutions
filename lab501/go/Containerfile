@@ -1,0 +1,18 @@
+FROM debian:testing-slim AS golangbase
+RUN apt-get update && \
+    apt-get install -y dumb-init golang && \
+    mkdir /app
+
+FROM golangbase AS buildstage
+WORKDIR /app
+COPY main.go /app/
+RUN go build -o hello main.go
+
+FROM golangbase
+RUN apt-get update && \
+    apt-get install -y dumb-init
+COPY --from=buildstage /app/hello /app/hello
+WORKDIR /app
+ENTRYPOINT [ "/usr/bin/dumb-init", "--" ]
+CMD ["./hello" ]
+

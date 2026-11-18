@@ -9,16 +9,16 @@ import (
 
 const portNumber = 4574
 const host = "0.0.0.0"
-const userCookieName = "authdaemon2-user"
+const userHeaderName = "ignition-auth-user"
 
 func serve(res http.ResponseWriter, req *http.Request) {
-  userCookie, err := req.Cookie(userCookieName)
+  userHeader := req.Header.Get(userHeaderName)
 
   var userName string
-  if (err != nil) {
+  if (userHeader == "") {
     userName = "Unknown"
   } else {
-    userName = userCookie.Value
+    userName = userHeader
   }
 
   io.WriteString(res, fmt.Sprintf("Hello %s. The current time is: %s", userName, time.Now().Format(time.RFC850)))
