@@ -1,20 +1,18 @@
 import express from 'express'
-import cookieParser from 'cookie-parser'
 import { readFile } from 'node:fs/promises'
 
 const app = express()
-app.use(cookieParser())
 
 
 const listenHost = "0.0.0.0"
 const listenPort =  parseInt(process.env.LISTEN_PORT || "4574")
 const greetingLocation = process.env.GREETING_LOCATION || "Greeting location not set"
 
-const userCookie = 'authdaemon2-user'
+const userHeader = 'ignition-auth-user'
 
-app.get('*', async function(req, res) {
+app.get('/{*splat}', async function(req, res) {
   try {
-    const user = req.cookies[userCookie] || 'UnknownUser'
+    const user = req.headers[userHeader] || 'UnknownUser'
 
     const greeting = await readFile(greetingLocation, 'utf8')
 

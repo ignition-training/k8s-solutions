@@ -9,7 +9,7 @@ spec:
   - name: regcred
   containers:
     - name: hellocontainer
-      image: k8s.ignition-training.com/user111/lab601python:1.0
+      image: registry.k8s.ignition-training.com/user111/lab601python:1.0
       imagePullPolicy: Always
       resources:
         limits:
