@@ -1,14 +1,9 @@
-"use strict"
-
 import express from 'express'
-import cookieParser from 'cookie-parser'
 import { readFile } from 'node:fs/promises'
 import os from 'os'
 import * as k8s from '@kubernetes/client-node'
 
 const app = express()
-app.use(cookieParser())
-
 
 const hostname = os.hostname() || 'Hostname unkown'
 
@@ -17,7 +12,7 @@ const listenPort =  parseInt(process.env.LISTEN_PORT || "4574")
 const greetingLocation = process.env.GREETING_LOCATION || "Greeting location not set"
 const namespace = process.env.NAMESPACE || "Namespace not set"
 
-const userCookie = 'authdaemon2-user'
+const userHeader = 'ignition-auth-user'
 
 const kc = new k8s.KubeConfig()
 kc.loadFromDefault()
@@ -30,9 +25,9 @@ async function getPodNames()
   return pods.items.map(x => x.metadata.name)
 }
 
-app.get('*', async function(req, res) {
+app.get('/{*splat}', async function(req, res) {
   try {
-    const user = req.cookies[userCookie] || 'UnknownUser'
+    const user = req.headers[userHeader] || 'UnknownUser'
 
     const greeting = await readFile(greetingLocation, 'utf8')
 
