@@ -14,6 +14,7 @@ spec:
       labels:
         app: hello
     spec:
+      serviceAccountName: helloaccount
       volumes:
       - name: config-volume
         configMap:
