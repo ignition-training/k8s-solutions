@@ -1,2 +1,2 @@
 servicePort: 8833
-urlPrefix: "/testuser8-hello"
+urlPrefix: "/app/testuser1"

@@ -29,7 +29,7 @@ async function getPodNames()
   return pods.items.map(x => x.metadata.name)
 }
 
-app.get('/readyz', function(req, res) {
+app.get(/readyz$/, function(req, res) {
   if (ready) {
     res.status(200).send('Ready')  
   }
@@ -38,7 +38,7 @@ app.get('/readyz', function(req, res) {
   }
 })
 
-app.get('/fallover', function(req, res) {
+app.get(/fallover$/, function(req, res) {
   ready = false
   
   setTimeout(() => { ready = true; }, 60000)
