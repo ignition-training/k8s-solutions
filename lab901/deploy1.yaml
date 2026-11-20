@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab901
+spec:
+  replicas: 10
+  selector:
+    matchLabels: 
+      lab: "901"
+      course: k8s
+  strategy:
+    type: 'Recreate'
+  template:
+    metadata:
+      labels:
+        lab: "901"
+        course: k8s
+    spec:
+      terminationGracePeriodSeconds: 5
+      containers:
+        - name: busybox 
+          image: busybox 
+          stdin: true
+          tty: true
